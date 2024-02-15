@@ -1,13 +1,3 @@
-Vad är syftet?
-Ett spel som är lätta att förstå och går att spela direkt.
-Man ska kunna pasusa/ladda om sidan och fortsätta.
-Resultatet är flyktigt - går inte att spara - lätt att börja om. "Casual"?
-
-Logiken är packad i en komponent som går att anpassa för andra situationer.
-Content ligger synligt i DOM.
-Det går att branda med kanske inte ett krav?
-
-
 BACKLOG
 http://localhost:8080/bingo/
 
