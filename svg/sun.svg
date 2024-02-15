@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <path fill="currentColor" fill-opacity=".2" d="M84 9H62v2h-2v4h-2v21h2v2h3v2h20v-2h4v-4h2V17h-2v-6h-3V9Z"/>
+    <path fill="currentColor" fill-opacity=".4" d="M64 11h19v2h2v4h2v17h-2v2h-2v2H66v-2h-4v-4h-2V18h2v-5h2v-2Z"/>
+    <path fill="currentColor" d="M68 13h11v3h4v2h3v13h-3v2h-4v2H66v-2h-1v-2h-3V18h3v-2h3v-3Z"/>
+    <path fill-rule="evenodd" d="M18 61h64v6h18v43H0V67h18v-6Zm3 16h-3v12h3V77Zm28 0h3v15h-3V77Zm34 0h-3v17h3V77Z" clip-rule="evenodd"/>
+</svg>

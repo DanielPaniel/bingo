@@ -1,0 +1,123 @@
+Vad är syftet?
+Ett spel som är lätta att förstå och går att spela direkt.
+Man ska kunna pasusa/ladda om sidan och fortsätta.
+Resultatet är flyktigt - går inte att spara - lätt att börja om. "Casual"?
+
+Logiken är packad i en komponent som går att anpassa för andra situationer.
+Content ligger synligt i DOM.
+Det går att branda med kanske inte ett krav?
+
+
+BACKLOG
+http://localhost:8080/bingo/
+
+    - Github - hur kan jag auto-deploja master?
+
+    - animera in en ny spelplan
+
+    - var/vad sparar vi till local storage?
+        - kanske ba ladda över json till local storage när man trycker Start
+        - Och så kan spelet Alltid ladda fr local storage?
+            - Vad ligger i local storage och vad ligger i html?
+            Bilderna ligger väl som taggar i trayn?
+    
+    - Typ 3 färger, som finns som default i komponenter, men kan overrideas fr css
+        - sätt markering och bingo-ani m färgerna
+        - kan svgs ha olika färger? Eller har varje svg bara en färg. hårdkodad.
+    
+    - Vad är layout (skugg-css) och vad är branding (ljus css)?
+
+    - lägg Bingo-bar i bingo-game ist - rationalisera bort en dialog - den med ja/nej behövs inte?
+
+    - hur blir det tydligt att man kan sätta färger m custom props? Om man anv svg...
+    Borde va synligt i ljusa DOMen
+
+
+    - Bygg in slumpning i komponent ngnstans
+
+    - Ladda ett spel på sidladdning - ska inte behövas knapptryck
+
+    - baserat på tema/svårighet
+    - Ljud vid check och bingo?
+
+- Fler bilder
+
+- Local storage
+    om jag laddar om sidan av misstag, tappar koppling, stänger osv - var var jag?
+    - spara
+    - ladda
+    - rensa
+
+- Vmguld
+
+- Favikoner osv
+
+- Themes - byta accent-färg?
+
+- meny/info
+- Regler/Manual/Hjälp?
+
+
+Idéer
+Om man får bingo på alla samtidigt så får man "MULTIBINGO!!!!!"
+Sätta spelplan med querystring?
+
+
+
+GREJER
+
+// Älg
+// Rådjur
+// Rovfågel
+// Fågel
+// Häst
+// Bil
+// Cykel
+// Lastbil
+// Gran
+// Lövträd
+// Björk
+// Vattendrag
+// Klocka
+// Flagga
+// Skortsten
+// Trafikljus
+// Vindkraftverk
+// Bro
+// Tunnel
+// Solen
+// Månen
+// Stjärnor
+// Moln
+// Ko
+// Får
+// Tågstation
+// Sparkcykel
+// Röd Bil
+// Svart Bil
+// Vit Bil
+// Grå Bil
+// Gul bil
+// Rött Hus
+// Gult Hus
+// Vitt Hus
+
+
+Affär
+Hund
+Höbal
+Personer som kramas
+Person med väska
+Person med telefon
+Barnvagn
+Buss
+Traktor
+Ett annat tåg
+Moped
+Motorcykel
+Barrträd
+Tall
+Brygga
+Båt
+Brevlåda
+

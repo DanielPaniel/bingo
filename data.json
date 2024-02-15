@@ -1,0 +1,40 @@
+{
+    "images": [
+        { "filename": "car.svg", "label": "Röd bil" },
+        { "filename": "car.svg", "label": "Grå bil" },
+        { "filename": "car.svg", "label": "Vit bil" },
+        { "filename": "car.svg", "label": "Svart bil" },
+        { "filename": "car.svg", "label": "Gul bil" },
+
+        { "filename": "clouds.svg", "label": "Moln" },
+        { "filename": "horse.svg", "label": "Häst" },
+        { "filename": "stars.svg", "label": "Stjärnor" },
+        { "filename": "sun.svg", "label": "Solen" },
+        { "filename": "moon.svg", "label": "Månen" },
+        { "filename": "pine-1.svg", "label": "Gran" },
+        { "filename": "bike.svg", "label": "Cykel" },
+        { "filename": "truck.svg", "label": "Lastbil" },
+        { "filename": "birch.svg", "label": "Björk" },
+        { "filename": "clock.svg", "label": "Klocka" },
+        { "filename": "flag.svg", "label": "Flagga" },
+        { "filename": "tree.svg", "label": "Lövträd" },
+        { "filename": "chimney.svg", "label": "Skorsten" },
+        { "filename": "traffic-lights.svg", "label": "Trafikljus" },
+        { "filename": "wind-turbine.svg", "label": "Vindkraftverk" },
+        { "filename": "water.svg", "label": "Vattendrag" },
+        { "filename": "bridge.svg", "label": "Bro" }, 
+        { "filename": "tunnel.svg", "label": "Tunnel"},
+        { "filename": "moose.svg", "label": "Älg"},
+        { "filename": "deer.svg", "label": "Rådjur"},
+        { "filename": "red-kite.svg", "label": "Rovfågel"},
+        { "filename": "magpie.svg", "label": "Fågel"},
+        { "filename": "cow.svg", "label": "Ko"},
+        { "filename": "sheep.svg", "label": "Får"},
+        { "filename": "train-station.svg", "label": "Tågstation"},
+        { "filename": "kick-bike.svg", "label": "Sparkcykel"},
+
+        { "filename": "house.svg", "label": "Gult hus"},
+        { "filename": "house.svg", "label": "Rött hus"},
+        { "filename": "house.svg", "label": "Vitt hus"}
+    ]
+}

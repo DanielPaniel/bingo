@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo!</title>
+    <base href="/bingo/">
+
+    <script src="./js/BingoGame.js"></script>
+    <script src="./js/BingoBar.js"></script>
+    <script src="./js/BingoTray.js"></script>
+    <script src="./js/BingoCheck.js"></script>
+
+    <style>
+        @font-face {
+            font-family: "Necto Mono";
+            src: url("NectoMono-Regular.woff2") format("woff2");
+        }
+        :root {
+            --font: 'Necto Mono', monospace;
+
+            --gold: #F6C30D;
+            --blue: #3AB8FE;
+            --black: #1F1C1C;
+            --white: #fff;
+
+            --foreground: var(--black);
+            --background: var(--white);
+            --accent: var(--blue);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-family: var(--font);
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+            color: var(--black);
+            text-transform: uppercase;
+        }
+        .label {
+            font-family: var(--font);
+            font-size: .8rem;
+            font-weight: normal;
+            color: var(--black);
+            word-break: break-word;
+        }
+        .image {
+            border-radius: 2%;
+            fill: var(--foreground);
+            color: var(--accent);
+            background: var(--background);
+            overflow: hidden;
+        }
+        bingo-game {
+            margin: auto;
+        }
+
+    </style>
+</head>
+
+    <body>
+        <bingo-game>
+            <bingo-bar>
+                <h1>Tåg-bingo!</h1>
+            </bingo-bar>
+            <bingo-tray id="tray" dimension="4">
+            </bingo-tray>
+        </bingo-game>
+
+
+        <template id="checkTemplate">
+            <bingo-check>
+                <div class="image" slot="image">Image</div>
+                <div class="label" slot="label">Description of image</div>
+            </bingo-check>
+        </template>
+
+        <script type="module">
+            // Generate images from json - these could be hardcoded in markup as well
+            let bingoData = [];
+            fetch('./data.json')
+                .then((response) => response.json())
+                .then((json) => {
+                    bingoData = json.images;
+                    let checks = createBingoChecks(bingoData);
+                    shuffleArray(checks);
+                    const tray = document.querySelector("bingo-tray");
+                    checks.forEach(check => tray.append(check));
+                });
+
+            function createBingoChecks(bingoData) {
+                let elements = [];
+
+                bingoData.forEach((item) => {
+                    let newItem = document.querySelector("#checkTemplate").content.cloneNode(true);
+                    let image = newItem.querySelector("[slot=image]");
+                    let label = newItem.querySelector("[slot=label]");
+
+                    fetch("svg/" + item.filename)
+                        .then(response => response.text())
+                        .then(svg => {
+                            image.innerHTML = svg;
+                        });
+                    label.innerHTML = item.label;
+
+                    elements.push(newItem);
+                });
+                return elements;
+            }
+
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+        </script>
+    </body>
+</html>

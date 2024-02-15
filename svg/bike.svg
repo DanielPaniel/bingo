@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path fill="currentColor" d="M74 42h5v5h-5v-5Z"/>
+  <path d="M80 28H62v-4h18v4ZM34 36h18v-4h-8v-2H34v6Z"/>
+  <path fill-rule="evenodd" d="M10 46h19v4h4v4h4v19h-4v3h-4v4H10v-4H7v-3H3V54h4v-4h3v-4Zm3 6h13v2h2v3h3v12h-3v3h-2v2H13v-2h-2v-3H8V57h3v-3h2v-2ZM71 46h19v4h3v4h4v19h-4v3h-3v4H71v-4h-4v-3h-4V54h4v-4h4v-4Zm3 6h13v2h2v3h3v12h-3v3h-2v2H74v-2h-2v-3h-3V57h3v-3h2v-2Z" clip-rule="evenodd"/>
+  <path d="M43 69v5h8v-5h-8Z"/>
+  <path fill="currentColor" d="M46 46h29v-4H46v4Z"/>
+  <path fill="currentColor" fill-rule="evenodd" d="M78 28h-4v15L46 59V36h-7v5L19 61h-2v4h4v1-1h20l3 7 4-3-2-4 29-18h2v6h1v12h5V51h-2v-7h-3V28ZM26 61l13-13v13H26Z" clip-rule="evenodd"/>
+</svg>
