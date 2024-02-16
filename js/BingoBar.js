@@ -8,29 +8,16 @@ customElements.define('bingo-bar', class extends HTMLElement  {
   
     }
 
-
     _getTemplate() {
         let template = document.createElement("template");
         template.innerHTML = // html
         `
             <slot></slot>
-            <button id="restart">Nytt spel</button>
-
-            <dialog>
-                <div class="dialog-container">
-                    <p>Vill du börja om?</p>
-                    <div class="buttons">
-                        <button id="positive">Ja</button>
-                        <button id="negative">Nej</button>
-                    </div>
-                </div>
-            </dialog>
+            <button>Nytt spel</button>
         `;
 
         return template.content.cloneNode(true);
     }
-
-
 
     _getStyle() {
         let styles = document.createElement("style");
@@ -59,68 +46,19 @@ customElements.define('bingo-bar', class extends HTMLElement  {
                 padding-block: .25em;
                 font-size: 1rem;
             }
-            dialog {
-                --foreground: var(--white);
-                --background: var(--black);
-
-                font-family: var(--font);
-                font-size: 1rem;
-                background: transparent;
-                border: none;
-
-                color: var(--foreground);
-                padding: 0;
-            }
-            dialog::backdrop {
-                background: rgba(0,0,0,.75);
-                backdrop-filter: blur(10px);
-            }
-            .dialog-container {
-                padding: 1em;
-                border: 1px solid var(--foreground);
-                border-radius: .2em;
-                background: var(--background);
-            }
-            dialog .buttons {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: .5em;
-            }
-            dialog button {
-                inline-size: 100%;
-            }
         `;
         return styles.cloneNode(true);
     }
 
-
     connectedCallback() {
-        let buttonRestart = this.shadowRoot.querySelector("button#restart");
-        let buttonPositive = this.shadowRoot.querySelector("button#positive");
-        let buttonNegative = this.shadowRoot.querySelector("button#negative");
-        let dialog = this.shadowRoot.querySelector("dialog");
+        let buttonRestart = this.shadowRoot.querySelector("button");
 
         buttonRestart.addEventListener("click", () => {
-            dialog.showModal();
-        });
-        buttonPositive.addEventListener("click", () => {
-            location.reload();
-        });
-        buttonNegative.addEventListener("click", () => {
-            dialog.close();
-        });
-        // Close outside .dialog-container
-        dialog.addEventListener("click", (event) => {
-            if (event.target === dialog) {
-                dialog.close();
-            }
+            this.dispatchEvent(this._generateEvent());
         });
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-
+    _generateEvent() {
+        return new CustomEvent("bingoRestart");
     }
-
-
-
 });

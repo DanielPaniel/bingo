@@ -133,7 +133,7 @@ customElements.define('bingo-tray', class extends HTMLElement  {
 
     connectedCallback() {       
         this.addEventListener("bingoMark", (event) => {
-            let dimension = parseInt(this.getAttribute("dimension"));
+            let dimension = parseInt(this.style.getPropertyValue("--dimension"));
             let currentChecks = this.querySelectorAll("bingo-check[show]");
             this._updateChecks(currentChecks, dimension);
         });

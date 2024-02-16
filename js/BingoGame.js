@@ -1,6 +1,4 @@
 customElements.define('bingo-game', class extends HTMLElement  {
-    
-    static observedAttributes = ["dimension"];
 
     constructor() {
         super();
@@ -22,7 +20,7 @@ customElements.define('bingo-game', class extends HTMLElement  {
             <slot></slot>
             <dialog>
                 <div class="dialog-container">
-                    <p>Hur svårt ska det va?</p>
+                    <p>Nytt spel!</p>
                     <div class="buttons">
                         <button data-dimension="3">Lätt</button>
                         <button data-dimension="4">Lagom</button>
@@ -34,8 +32,6 @@ customElements.define('bingo-game', class extends HTMLElement  {
 
         return template.content.cloneNode(true);
     }
-
-
 
     _getStyle() {
         let styles = document.createElement("style");
@@ -104,6 +100,8 @@ customElements.define('bingo-game', class extends HTMLElement  {
                 let dimension = event.target.dataset.dimension;
                 this.setAttribute("dimension", dimension);
                 dialog.close();
+                this._reset();
+                this._setup();
             });
         });
 
@@ -113,19 +111,57 @@ customElements.define('bingo-game', class extends HTMLElement  {
                 dialog.close();
             }
         });
-        dialog.showModal();
+
+
+        this._checkForBingoBar();
+        this._checkForBingoTray();
+
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === "dimension") {
+    _checkForBingoBar() {
+        if (this.querySelector("bingo-bar")) {
+            let bingoBar = this.querySelector("bingo-bar");
+            let dialog = this.shadowRoot.querySelector("dialog");
+            bingoBar.addEventListener("bingoRestart", () => {
+                dialog.showModal();
+            });
+        } else {
+            setTimeout(() => {
+                this._checkForBingoBar();
+            }, 200);
+        }
+    }
+
+    _checkForBingoTray() {
+        if (this.querySelector("bingo-tray")) {
+            let bingoTray = this.querySelector("bingo-tray");
+            bingoTray.addEventListener("bingoMark", () => {
+                this._saveGame();
+            });
+            this._checkForBingoChecks();
+        } else {
+            setTimeout(() => {
+                this._checkForBingoTray();
+            }, 200);
+        }
+    }
+
+    _checkForBingoChecks() {
+        let allChecks = this.querySelectorAll("bingo-check");
+        let dimension = this.getAttribute("dimension");
+        let checksNeeded = dimension * dimension;
+        
+        if (allChecks.length >= checksNeeded) {
             this._setup();
+        } else {
+            setTimeout(() => {
+                this._checkForBingoChecks();
+            }, 200);
         }
     }
 
     _setup() {
-        if(this._loadGame()) {
-            console.log("Loaded!");
-        } else {
+        if(!this._loadGame()) {
             this._createNew(this.getAttribute("dimension"));
         }
     }
@@ -133,48 +169,45 @@ customElements.define('bingo-game', class extends HTMLElement  {
 
     _createNew(dimension) {
         let allChecks = this.querySelectorAll("bingo-check");
-        // reset all
-        this._reset(allChecks);
-
         // Do we have enough checks in our DOM?
-        let checksInTotal = dimension * dimension;
-        if (allChecks.length >= checksInTotal) {
-            // set css grid
-            this.querySelector("bingo-tray").style.setProperty("--dimension", dimension);
+        let checksNeeded = dimension * dimension;
+        // set css grid
+        this.querySelector("bingo-tray").style.setProperty("--dimension", dimension);
 
-            let arrayCopy = Array.from(allChecks);
-            let newOrder = [];
+        let arrayCopy = Array.from(allChecks);
+        let newOrder = [];
 
-            for (let i = 0; i < checksInTotal; i ++) {
-                 // select random index
-                let randomIndex = Math.floor(Math.random() * arrayCopy.length);
-                // show check on selected index and reorder to top of tray-DOM
-                this.querySelector("bingo-tray").prepend(arrayCopy[randomIndex]);
-                arrayCopy[randomIndex].setAttribute("show", "");
-                newOrder.push(arrayCopy[randomIndex]);
-                // remove from array to avoid duplicate selection
-                arrayCopy.splice(randomIndex, 1);
-            }
+        for (let i = 0; i < checksNeeded; i ++) {
+            // select random index
+            let randomIndex = Math.floor(Math.random() * arrayCopy.length);
+            // show check on selected index and reorder to top of tray-DOM
+            this.querySelector("bingo-tray").prepend(arrayCopy[randomIndex]);
+            arrayCopy[randomIndex].setAttribute("show", "");
+            newOrder.push(arrayCopy[randomIndex]);
+            // remove from array to avoid duplicate selection
+            arrayCopy.splice(randomIndex, 1);
         }
-        let visibleChecks = this.querySelectorAll("bingo-check[show]");
-        this._saveGame(dimension, visibleChecks);
-        console.log("Saved!");
+        this._saveGame();
     }
 
-    _reset(checks) {
-        checks.forEach(check => {
+    _reset() {
+        let allChecks = this.querySelectorAll("bingo-check");
+        allChecks.forEach(check => {
             check.removeAttribute("show");
             check.removeAttribute("marked");
             check.removeAttribute("bingo");
         });
+        localStorage.removeItem("bingo-game");
     }
 
-    _saveGame(dimension, checks) {
+    _saveGame() {
+        let dimension = this.getAttribute("dimension");
+        let visibleChecks = this.querySelectorAll("bingo-check[show]");
         let jsonForLocalStorage = {
             "dimension": dimension,
             "checks": []
         };
-        checks.forEach((check) => {
+        visibleChecks.forEach((check) => {
             let checkAsJson = {
                 "id": check.getAttribute("id"),
                 "isMarked": check.hasAttribute("marked"),
@@ -182,6 +215,7 @@ customElements.define('bingo-game', class extends HTMLElement  {
             };
             jsonForLocalStorage.checks.push(checkAsJson);
         });
+        jsonForLocalStorage.checks.reverse();
         localStorage.setItem("bingo-game", JSON.stringify(jsonForLocalStorage));
     }
 
@@ -191,6 +225,7 @@ customElements.define('bingo-game', class extends HTMLElement  {
             let dataAsJson = JSON.parse(dataFromStorage);
 
             this.querySelector("bingo-tray").style.setProperty("--dimension", dataAsJson.dimension);
+            this.setAttribute("dimension", dataAsJson.dimension);
             
             dataAsJson.checks.forEach((checkJson) => {
                 let checkElement = this.querySelector(`#${checkJson.id}`);
