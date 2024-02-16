@@ -200,6 +200,7 @@ customElements.define('bingo-game', class extends HTMLElement  {
             // remove from array to avoid duplicate selection
             arrayCopy.splice(randomIndex, 1);
         }
+        this._setIndexes();
         this._saveGame();
     }
 
@@ -211,6 +212,16 @@ customElements.define('bingo-game', class extends HTMLElement  {
             check.removeAttribute("bingo");
         });
         localStorage.removeItem("bingo-game");
+    }
+
+    _setIndexes() {
+        let visibleChecks = this.querySelectorAll("bingo-check[show]");
+        let dimension = this.getAttribute("dimension");
+        visibleChecks.forEach((check, index) => {
+            let row = Math.floor(index/dimension);
+            let col = index%dimension;
+            check.style.setProperty("--check-index", col + row);
+        });
     }
 
     _saveGame() {
@@ -251,6 +262,7 @@ customElements.define('bingo-game', class extends HTMLElement  {
                 this.querySelector("bingo-tray").prepend(checkElement);
                 checkElement.setAttribute("show", "");
             });
+            this._setIndexes();
             return true;
         }
         return false;

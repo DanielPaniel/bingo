@@ -53,7 +53,7 @@ class BingoCheck extends HTMLElement  {
             }
             :host([show]) {
                 display: block;
-                animation: 200ms linear 1 forwards reveal;
+                animation: 300ms cubic-bezier(.73,1.74,.97,1.25) calc(var(--check-index) * 75ms) 1 forwards reveal;
             }
             :host([bingo]) {
                 background: var(--accent);
@@ -141,11 +141,11 @@ class BingoCheck extends HTMLElement  {
             @keyframes reveal {
                 0% {
                     opacity: 0;
-                    transform: scaleX(0.8);
+                    transform: scale(.9);
                 }
                 100% {
                     opacity: 1;
-                    transform: scaleX(1);
+                    transform: scale(1);
                 }
             }
         `;

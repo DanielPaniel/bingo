@@ -3,7 +3,7 @@ http://localhost:8080/bingo/
 
     - hur kan jag auto-deploja master?
 
-    - animera in en ny spelplan
+//    - animera in en ny spelplan
     
     - Typ 3 färger, som finns som default i komponenter, men kan overrideas fr css
         - sätt markering och bingo-ani m färgerna
