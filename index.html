@@ -67,7 +67,7 @@
             <bingo-bar>
                 <h1>Tåg-bingo!</h1>
             </bingo-bar>
-            <bingo-tray id="tray" dimension="4">
+            <bingo-tray id="tray" dimension="3">
             </bingo-tray>
         </bingo-game>
 
@@ -87,7 +87,6 @@
                 .then((json) => {
                     bingoData = json.images;
                     let checks = createBingoChecks(bingoData);
-                    shuffleArray(checks);
                     const tray = document.querySelector("bingo-tray");
                     checks.forEach(check => tray.append(check));
                 });
@@ -99,6 +98,7 @@
                     let newItem = document.querySelector("#checkTemplate").content.cloneNode(true);
                     let image = newItem.querySelector("[slot=image]");
                     let label = newItem.querySelector("[slot=label]");
+                    newItem.children[0].setAttribute("id", item.id);
 
                     fetch("svg/" + item.filename)
                         .then(response => response.text())
@@ -110,13 +110,6 @@
                     elements.push(newItem);
                 });
                 return elements;
-            }
-
-            function shuffleArray(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
             }
 
         </script>

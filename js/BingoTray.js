@@ -18,6 +18,8 @@ customElements.define('bingo-tray', class extends HTMLElement  {
                 <div>Bingo!</div>
             </div>
         `;
+
+        // Wrap "Bingo!" in span:s for animation
         let textNode = template.content.querySelector(".bingo div");
         let textContent = textNode.textContent;
         textNode.innerHTML = "";
@@ -27,7 +29,7 @@ customElements.define('bingo-tray', class extends HTMLElement  {
             element.innerHTML = textContent[i];
             textNode.append(element);
         }
-//        console.log(text);
+
         return template.content.cloneNode(true);
     }
     
@@ -132,10 +134,10 @@ customElements.define('bingo-tray', class extends HTMLElement  {
 
     connectedCallback() {
         let slot = this.shadowRoot.querySelector("slot");
+        // Vi ändrar på DOMen i sloten så vi kan inte trigga saker m slotchange!!!
         slot.addEventListener("slotchange", () => {
-            let allChecks = this.querySelectorAll("bingo-check");
-            // reset all
-             this._reset(allChecks);
+        //    let dimension = parseInt(this.getAttribute("dimension"));
+        //    this._arrangeTray(dimension);
         });
         
         this.addEventListener("bingoMark", (event) => {
@@ -152,8 +154,6 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         });
     }
 
-
-
     _arrangeTray(dimension) {
         let allChecks = this.querySelectorAll("bingo-check");
         // reset all
@@ -166,13 +166,16 @@ customElements.define('bingo-tray', class extends HTMLElement  {
             this.style.setProperty("--dimension", dimension);
 
             let arrayCopy = Array.from(allChecks);
+            let newOrder = [];
 
             for (let i = 0; i < checksInTotal; i ++) {
                  // select random index
                 let randomIndex = Math.floor(Math.random() * arrayCopy.length);
-                // show check on selected index
+                // show check on selected index and reorder to top of slot DOM
+                this.prepend(arrayCopy[randomIndex]);
                 arrayCopy[randomIndex].removeAttribute("hidden");
                 arrayCopy[randomIndex].style.setProperty("--check-index", i);
+                newOrder.push(arrayCopy[randomIndex]);
                 // remove from array to avoid duplicate selection
                 arrayCopy.splice(randomIndex, 1);
             }
