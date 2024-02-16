@@ -3,7 +3,7 @@ class BingoCheck extends HTMLElement  {
 
     constructor() {
         super();
-        this._clickTimeout = 500;
+        this._clickTimeout = 300;
         this._clickTimer = null;
 
         this.attachShadow({mode: "open"});

@@ -15,7 +15,9 @@ http://localhost:8080/bingo/
     Borde va synligt i ljusa DOMen
 
     - baserat på tema/svårighet
-    - Ljud vid check och bingo?
+    
+    - Ljud vid check och bingo - för safari på ios som kräver ngn interaktion..
+    https://stackoverflow.com/questions/31776548/why-cant-javascript-play-audio-files-on-iphone-safari
 
 - Fler bilder
 
