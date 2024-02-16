@@ -43,6 +43,7 @@ class BingoCheck extends HTMLElement  {
                 width: 100%;
                 background: var(--background);
                 outline: 1px solid var(--foreground);
+                opacity: 0;
             }
             :host([marked]) {
                 --check-scale: 1;
@@ -52,6 +53,7 @@ class BingoCheck extends HTMLElement  {
             }
             :host([show]) {
                 display: block;
+                animation: 200ms linear 1 forwards reveal;
             }
             :host([bingo]) {
                 background: var(--accent);
@@ -88,7 +90,7 @@ class BingoCheck extends HTMLElement  {
                 aspect-ratio: 1;
                 opacity: var(--check-opacity);
                 transform: scale(var(--check-scale));
-                transition: opacity 50ms ease-in, 
+                transition: opacity 100ms ease-in, 
                     transform 200ms var(--button-scale-timing);
                 box-shadow: .1em .2em .1em rgba(0,0,0,.25);
             }
@@ -133,6 +135,17 @@ class BingoCheck extends HTMLElement  {
                 }
                 100% {
                     transform: rotateZ(0deg);
+                }
+            }
+
+            @keyframes reveal {
+                0% {
+                    opacity: 0;
+                    transform: scaleX(0.8);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scaleX(1);
                 }
             }
         `;

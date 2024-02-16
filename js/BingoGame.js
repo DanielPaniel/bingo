@@ -61,19 +61,21 @@ customElements.define('bingo-game', class extends HTMLElement  {
                 --background: var(--black);
 
                 font-family: var(--font);
-                font-size: 1rem;
+                font-size: 2em;
                 background: transparent;
                 border: none;
 
                 color: var(--foreground);
-                padding: 0;
+                padding-block: 0;
+                padding-inline: 0;
             }
             dialog::backdrop {
                 background: rgba(0,0,0,.75);
                 backdrop-filter: blur(10px);
             }
             .dialog-container {
-                padding: 1em;
+                padding-block: 1em;
+                padding-inline: 2em;
                 border: 1px solid var(--foreground);
                 border-radius: .2em;
                 background: var(--background);
@@ -85,6 +87,13 @@ customElements.define('bingo-game', class extends HTMLElement  {
             }
             dialog button {
                 inline-size: 100%;
+                font-size: .8em;
+
+            }
+            dialog p {
+                margin-inline: 0;
+                margin-block: 0 1em;
+                padding: 0;
             }
         `;
         return styles.cloneNode(true);
@@ -137,6 +146,10 @@ customElements.define('bingo-game', class extends HTMLElement  {
             let bingoTray = this.querySelector("bingo-tray");
             bingoTray.addEventListener("bingoMark", () => {
                 this._saveGame();
+                this.querySelector("#bingo-sound-click").play();
+            });
+            bingoTray.addEventListener("bingo", () => {
+                this.querySelector("#bingo-sound-win").play();
             });
             this._checkForBingoChecks();
         } else {

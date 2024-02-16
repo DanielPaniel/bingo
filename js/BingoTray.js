@@ -215,6 +215,7 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         });
         if (isNewBingo) {
             this.shadowRoot.querySelector(".bingo").classList.add("play-animation");
+            this.dispatchEvent(new CustomEvent("bingo"));
         }
     }
 
