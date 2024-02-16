@@ -1,5 +1,4 @@
 customElements.define('bingo-tray', class extends HTMLElement  {
-    static observedAttributes = ["dimension"];
 
     constructor() {
         super();
@@ -132,17 +131,10 @@ customElements.define('bingo-tray', class extends HTMLElement  {
     }
 
 
-    connectedCallback() {
-        let slot = this.shadowRoot.querySelector("slot");
-        // Vi ändrar på DOMen i sloten så vi kan inte trigga saker m slotchange!!!
-        slot.addEventListener("slotchange", () => {
-        //    let dimension = parseInt(this.getAttribute("dimension"));
-        //    this._arrangeTray(dimension);
-        });
-        
+    connectedCallback() {       
         this.addEventListener("bingoMark", (event) => {
             let dimension = parseInt(this.getAttribute("dimension"));
-            let currentChecks = this.querySelectorAll("bingo-check:not([hidden])");
+            let currentChecks = this.querySelectorAll("bingo-check[show]");
             this._updateChecks(currentChecks, dimension);
         });
 
@@ -152,34 +144,6 @@ customElements.define('bingo-tray', class extends HTMLElement  {
                 bingoMessageContainer.classList.remove("play-animation");
             }
         });
-    }
-
-    _arrangeTray(dimension) {
-        let allChecks = this.querySelectorAll("bingo-check");
-        // reset all
-        this._reset(allChecks);
-
-        // Do we have enough checks in our DOM?
-        let checksInTotal = dimension * dimension;
-        if (allChecks.length >= checksInTotal) {
-            // set css grid
-            this.style.setProperty("--dimension", dimension);
-
-            let arrayCopy = Array.from(allChecks);
-            let newOrder = [];
-
-            for (let i = 0; i < checksInTotal; i ++) {
-                 // select random index
-                let randomIndex = Math.floor(Math.random() * arrayCopy.length);
-                // show check on selected index and reorder to top of slot DOM
-                this.prepend(arrayCopy[randomIndex]);
-                arrayCopy[randomIndex].removeAttribute("hidden");
-                arrayCopy[randomIndex].style.setProperty("--check-index", i);
-                newOrder.push(arrayCopy[randomIndex]);
-                // remove from array to avoid duplicate selection
-                arrayCopy.splice(randomIndex, 1);
-            }
-        }
     }
 
     _updateChecks(checks, dimension) {
@@ -254,18 +218,5 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         }
     }
 
-    _reset(checks) {
-        checks.forEach(check => {
-            check.style.setProperty("--check-index", "0");
-            check.setAttribute("hidden", "");
-            check.removeAttribute("marked");
-            check.removeAttribute("bingo");
-        });
-    }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === "dimension") {
-            this._arrangeTray(parseInt(newValue));
-        }
-    }
 });

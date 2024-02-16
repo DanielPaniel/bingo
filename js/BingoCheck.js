@@ -39,17 +39,10 @@ class BingoCheck extends HTMLElement  {
                 --check-scale: 0;
                 --check-color: var(--background);
 
-                /* TODO: denna gör inget?
-                Och inte transitionen heller? */
-                --check-index: 0;
-
-                display: block;
+                display: none;
                 width: 100%;
                 background: var(--background);
-                opacity: 1;
                 outline: 1px solid var(--foreground);
-
-                transition: opacity 200ms ease-out calc(var(--check-index) * 50ms);
             }
             :host([marked]) {
                 --check-scale: 1;
@@ -57,10 +50,8 @@ class BingoCheck extends HTMLElement  {
                 --check-color: var(--accent);
                 --item-opacity: .5;
             }
-            :host([hidden]) {
-                opacity: 0;
-                display: none;
-                transition: none;
+            :host([show]) {
+                display: block;
             }
             :host([bingo]) {
                 background: var(--accent);
