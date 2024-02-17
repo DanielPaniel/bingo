@@ -107,7 +107,7 @@
                 .then((response) => response.json())
                 .then((json) => {
                     bingoData = json.images;
-                    let checks = createBingoChecks2(bingoData);
+                    let checks = createBingoChecks(bingoData);
                     const tray = document.querySelector("bingo-tray");
                     checks.forEach(check => tray.append(check));
                 });

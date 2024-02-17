@@ -44,6 +44,8 @@ class BingoCheck extends HTMLElement  {
                 background: var(--background);
                 outline: 1px solid var(--foreground);
                 opacity: 0;
+
+                transition: background-color 100ms ease calc(var(--check-index) * 50ms);
             }
             :host([marked]) {
                 --check-scale: 1;

@@ -1,28 +1,28 @@
 BACKLOG
 http://localhost:8080/bingo/
 
-    - hur kan jag auto-deploja master?
 
-    - Bättre bock
+    - Bättre bock / bingo
 
     - Vad är layout (skugg-css) och vad är branding (ljus css)?
-
-    - hur blir det tydligt att man kan sätta färger m custom props? Om man anv svg...
-    Borde va synligt i ljusa DOMen
 
     - baserat på tema/svårighet
 
     - Ljud vid check och bingo - för safari på ios som kräver ngn interaktion..
     https://stackoverflow.com/questions/31776548/why-cant-javascript-play-audio-files-on-iphone-safari
 
+    - Undvik id på audio-element?
+
+    - Hårdkoda alla bilder rakt i html:en? Så behövs inte det förvirrande extra js:et och jsonen med typ samma data.
+
 - Fler bilder
-
-- Vmguld
-
-- Themes - byta accent-färg?
+- hur kan jag auto-deploja master?
+- Publicera på github
+    - Vmguld
 
 - meny/info
 - Regler/Manual/Hjälp?
+- Kommentarer / readmes?
 
 
 Idéer

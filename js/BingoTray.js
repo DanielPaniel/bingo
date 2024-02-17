@@ -77,7 +77,7 @@ customElements.define('bingo-tray', class extends HTMLElement  {
                 text-transform: uppercase;
             }
             .bingo.play-animation {
-                animation: 2200ms ease-out 300ms show-bingo;
+                animation: 2200ms ease-out 500ms show-bingo;
             }
             .bingo span {
                 --letter-index: 0;
@@ -87,7 +87,7 @@ customElements.define('bingo-tray', class extends HTMLElement  {
                 opacity: 0;
             }
             .bingo.play-animation span {
-                --delay: calc(500ms + (50ms * var(--letter-index)));
+                --delay: calc(600ms + (50ms * var(--letter-index)));
                 animation: 1200ms cubic-bezier(.47,2.03,.59,.66) var(--delay) 1 forwards celebrate;
             }
 

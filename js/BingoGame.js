@@ -150,7 +150,7 @@ customElements.define('bingo-game', class extends HTMLElement  {
             });
             bingoTray.addEventListener("bingo", () => {
                 // magic - to sync better with animation
-                setTimeout(() => this.querySelector("#bingo-sound-win").play(), 500);
+                setTimeout(() => this.querySelector("#bingo-sound-win").play(), 750);
             });
             this._checkForBingoChecks();
         } else {
