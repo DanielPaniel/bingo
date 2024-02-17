@@ -64,6 +64,12 @@
             background: var(--background);
             overflow: hidden;
         }
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+        }
         bingo-game {
             margin: auto;
         }
@@ -101,7 +107,7 @@
                 .then((response) => response.json())
                 .then((json) => {
                     bingoData = json.images;
-                    let checks = createBingoChecks(bingoData);
+                    let checks = createBingoChecks2(bingoData);
                     const tray = document.querySelector("bingo-tray");
                     checks.forEach(check => tray.append(check));
                 });
@@ -114,14 +120,8 @@
                     let image = newItem.querySelector("[slot=image]");
                     let label = newItem.querySelector("[slot=label]");
                     newItem.children[0].setAttribute("id", item.id);
-
-                    fetch("svg/" + item.filename)
-                        .then(response => response.text())
-                        .then(svg => {
-                            image.innerHTML = svg;
-                        });
+                    image.innerHTML = `<img src="svg/${item.filename}" width="100" height="100" alt="">`;
                     label.innerHTML = item.label;
-
                     elements.push(newItem);
                 });
                 return elements;

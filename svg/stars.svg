@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <path fill="currentColor" d="M10 77h5v5h-5zM34 86h4v4h-4zM89 79h4v4h-4z"/>
-  <path fill-rule="evenodd" d="M0 0h100v73H65v-5H0V0Zm13 16h-1v1h-1v1h1v1h1v-1h1v-1h-1v-1Zm41 19h1v1h1v1h-1v1h-1v-1h-1v-1h1v-1Zm23-22h-1v1h-1v1h1v1h1v-1h1v-1h-1v-1ZM24 34l1 1-1 2 1 1-1 1-1-1-2 1-1-1 1-1-1-2 1-1 2 1 1-1Z" clip-rule="evenodd"/>
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="77" width="5" height="5" fill="#326331"/>
+<rect x="34" y="86" width="4" height="4" fill="#326331"/>
+<rect x="89" y="79" width="4" height="4" fill="#326331"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H100V73H65V68H0V0ZM13 16H12V17H11V18H12V19H13V18H14V17H13V16ZM54 35H55V36H56V37H55V38H54V37H53V36H54V35ZM77 13H76V14H75V15H76V16H77V15H78V14H77V13ZM23.714 34.1785L24.8925 35.357L23.714 36.5355L24.8925 37.714L23.714 38.8926L22.5355 37.714L21.357 38.8926L20.1785 37.714L21.357 36.5355L20.1785 35.357L21.357 34.1785L22.5355 35.357L23.714 34.1785Z" fill="black"/>
 </svg>

@@ -1,6 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <path fill-rule="evenodd" d="M35 5h30v4h5v82h-5v4h-6v10H41V95h-6v-4h-5V9h5V5Zm10 11h10v2h2v2h2v10h-2v2h-2v2H45v-2h-2v-2h-2V20h2v-2h2v-2Zm10 25H45v2h-2v2h-2v10h2v2h2v2h10v-2h2v-2h2V45h-2v-2h-2v-2Z" clip-rule="evenodd"/>
-    <path fill="currentColor" d="M45 66h10v18H45z"/>
-    <path fill="currentColor" d="M59 70v10H41V70z"/>
-    <path fill="currentColor" d="M57 68v14H43V68z"/>
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_99_1686)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M35 5H65V9H70V91H65V95H59V105H41V95H35V91H30V9H35V5ZM45 16H55V18H57V20H59V30H57V32H55V34H45V32H43V30H41V20H43V18H45V16ZM55 41H45V43H43V45H41V55H43V57H45V59H55V57H57V55H59V45H57V43H55V41Z" fill="black"/>
+<rect x="45" y="66" width="10" height="18" fill="#326331"/>
+<rect x="59" y="70" width="10" height="18" transform="rotate(90 59 70)" fill="#326331"/>
+<rect x="57" y="68" width="14" height="14" transform="rotate(90 57 68)" fill="#326331"/>
+</g>
+<defs>
+<clipPath id="clip0_99_1686">
+<rect width="100" height="100" fill="white"/>
+</clipPath>
+</defs>
 </svg>

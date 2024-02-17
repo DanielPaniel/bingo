@@ -24,7 +24,7 @@ customElements.define('bingo-game', class extends HTMLElement  {
                     <div class="buttons">
                         <button data-dimension="3">Lätt</button>
                         <button data-dimension="4">Lagom</button>
-                        <button data-dimension="5">Omöjlig</button>
+                        <button data-dimension="6">Omöjlig</button>
                     </div>
                 </div>
             </dialog>

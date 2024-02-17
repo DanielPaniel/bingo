@@ -3,19 +3,15 @@ http://localhost:8080/bingo/
 
     - hur kan jag auto-deploja master?
 
-//    - animera in en ny spelplan
-    
-    - Typ 3 färger, som finns som default i komponenter, men kan overrideas fr css
-        - sätt markering och bingo-ani m färgerna
-        - kan svgs ha olika färger? Eller har varje svg bara en färg. hårdkodad. som img rakt i dom?!
-    
+    - Bättre bock
+
     - Vad är layout (skugg-css) och vad är branding (ljus css)?
 
     - hur blir det tydligt att man kan sätta färger m custom props? Om man anv svg...
     Borde va synligt i ljusa DOMen
 
     - baserat på tema/svårighet
-    
+
     - Ljud vid check och bingo - för safari på ios som kräver ngn interaktion..
     https://stackoverflow.com/questions/31776548/why-cant-javascript-play-audio-files-on-iphone-safari
 
@@ -72,13 +68,12 @@ GREJER
 // Rött Hus
 // Gult Hus
 // Vitt Hus
-
+// Höbal
+// Person med väska
 
 Affär
 Hund
-Höbal
 Personer som kramas
-Person med väska
 Person med telefon
 Barnvagn
 Buss
