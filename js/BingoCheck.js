@@ -78,8 +78,9 @@ class BingoCheck extends HTMLElement  {
             }
             .check {
                 background: var(--check-color);
-                outline: 1em solid var(--background);
-                border: 1em solid var(--foreground);
+                outline: 1em solid #00000066;
+                box-sizing: border-box;
+                border-radius: 50%;
 
                 position: absolute;
                 left: 0;
@@ -87,14 +88,13 @@ class BingoCheck extends HTMLElement  {
                 top: 0;
                 bottom: 0;
                 margin-inline: auto;
-                margin-block: auto;
-                inline-size: 20%;
+                margin-block: 33% auto;
+                inline-size: 33%;
                 aspect-ratio: 1;
                 opacity: var(--check-opacity);
                 transform: scale(var(--check-scale));
                 transition: opacity 100ms ease-in, 
                     transform 200ms var(--button-scale-timing);
-                box-shadow: .1em .2em .1em rgba(0,0,0,.25);
             }
             :host([marked]) button.pressed,
             button.pressed {
