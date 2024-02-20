@@ -77,8 +77,7 @@ class BingoCheck extends HTMLElement  {
                 user-select: none;
             }
             .check {
-                background: var(--check-color);
-                outline: 1em solid #00000066;
+                background: radial-gradient(var(--check-color) 50%, #00000066 50%);
                 box-sizing: border-box;
                 border-radius: 50%;
 
@@ -88,8 +87,8 @@ class BingoCheck extends HTMLElement  {
                 top: 0;
                 bottom: 0;
                 margin-inline: auto;
-                margin-block: 33% auto;
-                inline-size: 33%;
+                margin-block: 25% auto;
+                inline-size: 50%;
                 aspect-ratio: 1;
                 opacity: var(--check-opacity);
                 transform: scale(var(--check-scale));

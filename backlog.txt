@@ -2,7 +2,7 @@ BACKLOG
 http://localhost:8080/bingo/
 
 
-    - Bättre bock / bingo
+//    - Bättre bock / bingo
 
     - Vad är layout (skugg-css) och vad är branding (ljus css)?
 
@@ -27,7 +27,7 @@ http://localhost:8080/bingo/
 
 Idéer
 Om man får bingo på alla samtidigt så får man "MULTIBINGO!!!!!"
-Sätta spelplan med querystring?
+Sätta spelplan med querystring? eller varför?
 
 
 

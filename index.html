@@ -58,14 +58,9 @@
             color: var(--black);
             word-break: break-word;
         }
-        .image {
-            border-radius: 2%;
-            fill: var(--foreground);
-            color: var(--accent);
-            background: var(--background);
-            overflow: hidden;
-        }
+
         img {
+            border-radius: 2%;
             display: block;
             width: 100%;
             height: auto;
@@ -96,7 +91,7 @@
 
         <template id="checkTemplate">
             <bingo-check>
-                <div class="image" slot="image">Image</div>
+                <img slot="image" src="" width="100" height="100" alt="" />
                 <div class="label" slot="label">Description of image</div>
             </bingo-check>
         </template>
@@ -121,7 +116,7 @@
                     let image = newItem.querySelector("[slot=image]");
                     let label = newItem.querySelector("[slot=label]");
                     newItem.children[0].setAttribute("id", item.id);
-                    image.innerHTML = `<img src="svg/${item.filename}" width="100" height="100" alt="">`;
+                    image.src = `svg/${item.filename}`;
                     label.innerHTML = item.label;
                     elements.push(newItem);
                 });
