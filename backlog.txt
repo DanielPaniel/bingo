@@ -4,9 +4,10 @@ http://localhost:8080/bingo/
 
 //    - Bättre bock / bingo
 //    - Ljud vid check och bingo - för safari på ios som kräver ngn interaktion..
+//    - Undvik hårdkodat id på audio-element?
+
 
     - ngn promise kastar o hanterat fel i ios
-    - Undvik hårdkodat id på audio-element?
 
     - Vad är layout (skugg-css) och vad är branding (ljus css)?
 

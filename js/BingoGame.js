@@ -14,8 +14,7 @@ customElements.define('bingo-game', class extends HTMLElement  {
 
         /* Start sound on touch in order to allow other sounds to play later (for ios) */
         const dummySound = () => {
-            this.querySelector("#bingo-sound-click").play();
-            this.querySelector("#bingo-sound-click").pause();
+            this._playClickAudio(true);
             this.removeEventListener("touchstart", dummySound);
         };
         this.addEventListener("touchstart", dummySound);
@@ -137,6 +136,26 @@ customElements.define('bingo-game', class extends HTMLElement  {
 
     }
 
+    _playClickAudio(instantPause = false) {
+        let clickAudio = this.querySelector("[data-id='bingo-sound-click']");
+        if (clickAudio) {
+            clickAudio.play();
+
+            if (instantPause) {
+                clickAudio.pause();
+            }
+        }
+    }
+    _playWinAudio() {
+        let winAudio = this.querySelector("[data-id='bingo-sound-win']");
+        if (winAudio) {
+            // magic - to sync better with animation
+            setTimeout(() => {
+                winAudio.play();
+            }, 750);
+        }
+    }
+
     _checkForBingoBar() {
         if (this.querySelector("bingo-bar")) {
             let bingoBar = this.querySelector("bingo-bar");
@@ -156,12 +175,9 @@ customElements.define('bingo-game', class extends HTMLElement  {
             let bingoTray = this.querySelector("bingo-tray");
             bingoTray.addEventListener("bingoMark", () => {
                 this._saveGame();
-                this.querySelector("#bingo-sound-click").play();
+                this._playClickAudio();
             });
-            bingoTray.addEventListener("bingo", () => {
-                // magic - to sync better with animation
-                setTimeout(() => this.querySelector("#bingo-sound-win").play(), 750);
-            });
+            bingoTray.addEventListener("bingo", () => this._playWinAudio());
             this._checkForBingoChecks();
         } else {
             setTimeout(() => {
