@@ -3,17 +3,15 @@ http://localhost:8080/bingo/
 
 
 //    - Bättre bock / bingo
+//    - Ljud vid check och bingo - för safari på ios som kräver ngn interaktion..
+
+    - ngn promise kastar o hanterat fel i ios
+    - Undvik hårdkodat id på audio-element?
 
     - Vad är layout (skugg-css) och vad är branding (ljus css)?
 
     - baserat på tema/svårighet
 
-    - Ljud vid check och bingo - för safari på ios som kräver ngn interaktion..
-    https://stackoverflow.com/questions/31776548/why-cant-javascript-play-audio-files-on-iphone-safari
-
-    - Undvik id på audio-element?
-
-    - Hårdkoda alla bilder rakt i html:en? Så behövs inte det förvirrande extra js:et och jsonen med typ samma data.
 
 - Fler bilder
 - hur kan jag auto-deploja master?

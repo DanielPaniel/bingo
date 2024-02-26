@@ -11,7 +11,17 @@ customElements.define('bingo-game', class extends HTMLElement  {
         this.shadowRoot.innerHTML = "";
         this.shadowRoot.appendChild(this._getTemplate());
         this.shadowRoot.appendChild(this._getStyle());
+
+        /* Start sound on touch in order to allow other sounds to play later (for ios) */
+        const dummySound = () => {
+            this.querySelector("#bingo-sound-click").play();
+            this.querySelector("#bingo-sound-click").pause();
+            this.removeEventListener("touchstart", dummySound);
+        };
+        this.addEventListener("touchstart", dummySound);
     }
+
+
 
     _getTemplate() {
         let template = document.createElement("template");
