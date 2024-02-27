@@ -12,6 +12,10 @@ customElements.define('bingo-bar', class extends HTMLElement  {
   
     }
 
+    /**
+     * Create structure
+     * @returns Node
+     */
     _getTemplate() {
         let template = document.createElement("template");
         template.innerHTML = // html
@@ -23,6 +27,10 @@ customElements.define('bingo-bar', class extends HTMLElement  {
         return template.content.cloneNode(true);
     }
 
+    /**
+     * Create CSS for shadow DOM
+     * @returns Node
+     */
     _getStyle() {
         let styles = document.createElement("style");
         styles.textContent = //css
@@ -66,6 +74,7 @@ customElements.define('bingo-bar', class extends HTMLElement  {
     connectedCallback() {
         let buttonRestart = this.shadowRoot.querySelector("button");
 
+        // Dispatch custom event for bingo-game component
         buttonRestart.addEventListener("click", () => {
             this.dispatchEvent(this._generateEvent());
         });

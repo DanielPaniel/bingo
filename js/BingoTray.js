@@ -14,6 +14,10 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         shadow.appendChild(this._getStyle());
     }
 
+    /**
+     * Create structure
+     * @returns Node
+     */
     _getTemplate() {
         let template = document.createElement("template");
         template.innerHTML = // html
@@ -38,6 +42,10 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         return template.content.cloneNode(true);
     }
     
+    /**
+     * Create CSS for shadow DOM
+     * @returns Node
+     */
     _getStyle() {
         let styles = document.createElement("style");
         styles.textContent = //css
@@ -153,13 +161,16 @@ customElements.define('bingo-tray', class extends HTMLElement  {
     }
 
 
-    connectedCallback() {       
+    connectedCallback() {
+
+        // Listener for when a check is marked/unmarked update statuses and check for bingos  
         this.addEventListener("bingoMark", (event) => {
             let dimension = parseInt(this.style.getPropertyValue("--dimension"));
             let currentChecks = this.querySelectorAll("bingo-check[show]");
             this._updateChecks(currentChecks, dimension);
         });
 
+        // Listener for ending and remove bingo-celebration-animation
         let bingoMessageContainer = this.shadowRoot.querySelector(".bingo");
         bingoMessageContainer.addEventListener("animationend", (event) => {
             if (event.target === bingoMessageContainer) {
@@ -168,15 +179,22 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         });
     }
 
+    /**
+     * Loop through given checks and update status
+     * @param {Node[]} checks 
+     * @param {int} dimension 
+     */
     _updateChecks(checks, dimension) {
         checks.forEach((check, index) => {
             let checkIsBingo = false;
 
+            // Look up row, based on current check
             let row = this._getRowFromCheckIndex(checks, index, dimension);
             if (this._allIsMarked(row)) {
                 this._setBingo(row);
                 checkIsBingo = true;
             }
+            // Look up col, based on current check
             let col = this._getColFromCheckIndex(checks, index, dimension);
             if (this._allIsMarked(col)) {
                 this._setBingo(col);
@@ -189,16 +207,37 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         });
     }
 
+    /**
+     * Get elements in row, based on index
+     * @param {Node[]} checks 
+     * @param {int} checkIndex 
+     * @param {int} dimension 
+     * @returns {Node[]}
+     */
     _getRowFromCheckIndex(checks, checkIndex, dimension) {
        let rowIndex = dimension - Math.ceil((checks.length - checkIndex) / dimension);
         return this._getRow(checks, rowIndex, dimension);
     }
 
+        /**
+     * Get elements in column, based on index
+     * @param {Node[]} checks 
+     * @param {int} checkIndex 
+     * @param {int} dimension 
+     * @returns {Node[]}
+     */
     _getColFromCheckIndex(checks, checkIndex, dimension) {
         let colIndex = checkIndex %= dimension;
          return this._getColumn(checks, colIndex, dimension);
      }
 
+     /**
+      * Select all checks in a row with given index
+      * @param {Node[]} checks 
+      * @param {int} rowIndex 
+      * @param {int} dimension 
+      * @returns 
+      */
      _getRow(checks, rowIndex, dimension) {
         let row = [];
         for (let col = 0; col < dimension; col ++) {
@@ -208,6 +247,13 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         return row;
     }
 
+         /**
+      * Select all checks in a column with given index
+      * @param {Node[]} checks 
+      * @param {int} columnIndex 
+      * @param {int} dimension 
+      * @returns 
+      */
     _getColumn(checks, columnIndex, dimension) {
         let col = [];
         for (let row = 0; row < dimension; row ++) {
@@ -217,6 +263,11 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         return col; 
     }
 
+    /**
+     * If all given elements are "marked"
+     * @param {Node[]} checks 
+     * @returns {boolean}
+     */
     _allIsMarked(checks) {
         let isMarked = true;
         checks.forEach((check) => {
@@ -227,6 +278,10 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         return isMarked;
     }
 
+    /**
+     * Set given elemens as "Bingo", and if not "Bingo" before - trigger animation
+     * @param {Node[]} checks 
+     */
     _setBingo(checks) {
         let isNewBingo = false;
         checks.forEach((check) => {
@@ -235,6 +290,7 @@ customElements.define('bingo-tray', class extends HTMLElement  {
                 isNewBingo = true;
             }
         });
+        // If any of the given checks are new "Bingoed" - trigger Bingo animation and event
         if (isNewBingo) {
             this.shadowRoot.querySelector(".bingo").classList.add("play-animation");
             this.dispatchEvent(new CustomEvent("bingo"));

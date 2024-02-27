@@ -5,12 +5,11 @@
  *      and change appearance accordingly
  * - Keep track of clicks and taps and interactions
  */
-
-class BingoCheck extends HTMLElement  {
-    static observedAttributes = ["marked", "bingo"];
+customElements.define('bingo-check', class extends HTMLElement  {
 
     constructor() {
         super();
+        // clickTimeot is how long a check needs to be pressed before action
         this._clickTimeout = 300;
         this._clickTimer = null;
 
@@ -20,6 +19,10 @@ class BingoCheck extends HTMLElement  {
         shadow.appendChild(this._getStyle());
     }
 
+    /**
+     * Create structure
+     * @returns {Node}
+     */
     _getTemplate() {
         let template = document.createElement("template");
         template.innerHTML = // html
@@ -33,6 +36,10 @@ class BingoCheck extends HTMLElement  {
         return template.content.cloneNode(true);
     }
     
+    /**
+     * Create CSS for shadow DOM
+     * @returns {Node}
+     */
     _getStyle() {
         let styles = document.createElement("style");
         styles.textContent = //css
@@ -183,8 +190,9 @@ class BingoCheck extends HTMLElement  {
 
 
     connectedCallback() {
+
         let button = this.shadowRoot.querySelector("button");
-        
+        // Listen to interactions
         button.addEventListener("mousedown", () => {
             this._triggerClick(button);
         });
@@ -205,6 +213,10 @@ class BingoCheck extends HTMLElement  {
         });
     }
 
+    /**
+     * Trigger a delayed activation of a button
+     * @param {Element} button 
+     */
     _triggerClick(button) {
         button.classList.add("pressed");            
             if (!this._clickTimer) {
@@ -220,19 +232,22 @@ class BingoCheck extends HTMLElement  {
             }
     }
 
+    /**
+     * Reset activation animation and timer
+     * @param {Element} button 
+     */
     _resetClick(button) {
         button.classList.remove("pressed");
         clearInterval(this._clickTimer);
         this._clickTimer = null;
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-
-    }
-
+    /**
+     * Bubble an event so that Bingo-game only needs to listen to the parent element, not every bingo-check
+     * @returns {CustomEvent}
+     */
     _createEvent() {
         return new CustomEvent("bingoMark", { bubbles: true });
     }
 
-}
-customElements.define('bingo-check', BingoCheck);
+});
