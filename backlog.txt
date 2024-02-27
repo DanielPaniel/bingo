@@ -5,11 +5,14 @@ http://localhost:8080/bingo/
 //    - Bättre bock / bingo
 //    - Ljud vid check och bingo - för safari på ios som kräver ngn interaktion..
 //    - Undvik hårdkodat id på audio-element?
+//    - ngn promise kastar o hanterat fel i ios
 
-
-    - ngn promise kastar o hanterat fel i ios
 
     - Vad är layout (skugg-css) och vad är branding (ljus css)?
+
+    - Gör om checks
+        - markerad - sätt backgroundsfärg
+        - bingo - dra ett streck över raden - typ toggla klasser i js:et
 
     - baserat på tema/svårighet
 

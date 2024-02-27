@@ -30,10 +30,14 @@ class BingoCheck extends HTMLElement  {
         styles.textContent = //css
         `
             :host {
+                --background: var(--bingo-background, #fff);
+                --foreground: var(--bingo-foreground, #000);
+                --accent: var(--bingo-accent, #3b6);
+
                 --button-scale: 1;
                 --button-scale-duration: 120ms;
                 --button-scale-timing: cubic-bezier(.42,2.21,.67,.58);
-                --item-opacity: 1;
+                --item-opacity: .6;
 
                 --check-opacity: 0;
                 --check-scale: 0;
@@ -51,7 +55,7 @@ class BingoCheck extends HTMLElement  {
                 --check-scale: 1;
                 --check-opacity: 1;
                 --check-color: var(--accent);
-                --item-opacity: .5;
+                --item-opacity: 1;
             }
             :host([show]) {
                 display: block;
@@ -86,14 +90,14 @@ class BingoCheck extends HTMLElement  {
                 right: 0;
                 top: 0;
                 bottom: 0;
-                margin-inline: auto;
-                margin-block: 25% auto;
-                inline-size: 50%;
+                margin-inline: 5% auto;
+                margin-block: 5% auto;
+                inline-size: 40%;
                 aspect-ratio: 1;
                 opacity: var(--check-opacity);
                 transform: scale(var(--check-scale));
                 transition: opacity 100ms ease-in, 
-                    transform 200ms var(--button-scale-timing);
+                    transform 200ms cubic-bezier(.42,2.21,.67,.58);
             }
             :host([marked]) button.pressed,
             button.pressed {
@@ -101,6 +105,8 @@ class BingoCheck extends HTMLElement  {
                 --button-scale-duration: ${this._clickTimeout}ms;
                 --button-scale-timing: ease-out;
 
+                --item-opacity: .3;
+                
                 animation: wiggle 75ms linear infinite;
             }
 
@@ -109,19 +115,17 @@ class BingoCheck extends HTMLElement  {
                 outline-offset: -6px;
             }
 
-            slot {
-                opacity: var(--item-opacity);
-            }
-
             slot[name="image"] {
                 display: block;
                 block-size: 100%;
                 inline-size: 100%;
 
+                opacity: var(--item-opacity);
+
                 transform: scale(var(--button-scale));
-                transition-property: transform;
-                transition-duration: var(--button-scale-duration);
-                transition-timing-function: var(--button-scale-timing);
+                transition: transform var(--button-scale-duration) var(--button-scale-timing),
+                    opacity var(--button-scale-duration) linear; 
+
             }
 
             @keyframes wiggle {

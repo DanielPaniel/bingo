@@ -26,36 +26,46 @@
             src: url("NectoMono-Regular.woff2") format("woff2");
         }
         :root {
-            --font: 'Necto Mono', monospace;
-
-            --gold: #F6C30D;
-            --blue: #3AB8FE;
             --black: #1F1C1C;
             --white: #fff;
-            --green: #33d86d;
+            
+            --purple: #9244D0;
+            --blue: #348CF4;
+            --green: #15D74C;
+            --yellow: #DEEC37;
+            --orange: #FFAA46;
+            --red: #F63D32;
 
-            --foreground: var(--black);
-            --background: var(--white);
-            --accent: var(--green);
+
+            --bingo-font: 'Necto Mono', monospace;
+            --bingo-foreground: var(--black);
+            --bingo-background: var(--white);
+            --bingo-accent: var(--green);
+            --bingo-rainbow-1: var(--purple);
+            --bingo-rainbow-2: var(--blue);
+            --bingo-rainbow-3: var(--green);
+            --bingo-rainbow-4: var(--yellow);
+            --bingo-rainbow-5: var(--orange);
+            --bingo-rainbow-6: var(--red);
         }
         body {
             margin: 0;
             padding: 0;
         }
         h1 {
-            font-family: var(--font);
+            font-family: var(--bingo-font);
             font-size: 1.5rem;
             font-weight: normal;
             margin: 0;
             padding: 0;
-            color: var(--black);
+            color: var(--bingo-foreground);
             text-transform: uppercase;
         }
         .label {
-            font-family: var(--font);
+            font-family: var(--bingo-font);
             font-size: .8rem;
             font-weight: normal;
-            color: var(--black);
+            color: var(--bingo-foreground);
             word-break: break-word;
         }
 

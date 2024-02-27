@@ -24,8 +24,8 @@ customElements.define('bingo-bar', class extends HTMLElement  {
         styles.textContent = //css
         `
             :host {
-                --foreground: var(--black);
-                --background: var(--white);
+                --font: var(--bingo-font, monospace);
+                --foreground: var(--bingo-foreground, #000);
 
                 display: flex;
                 align-items: center;

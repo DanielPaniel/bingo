@@ -38,6 +38,16 @@ customElements.define('bingo-tray', class extends HTMLElement  {
         `
             :host {
                 --dimension: 4;
+                --font: var(--bingo-font, monospace);
+                --overlay: rgba(255,255,255,.75);
+                --foreground: var(--bingo-foreground, #000);
+
+                --rainbow-1: var(--bingo-rainbow-1, #9244D0);
+                --rainbow-2: var(--bingo-rainbow-2, #348CF4);
+                --rainbow-3: var(--bingo-rainbow-3, #15D74C);
+                --rainbow-4: var(--bingo-rainbow-4, #DEEC37);
+                --rainbow-5: var(--bingo-rainbow-5, #FFAA46);
+                --rainbow-6: var(--bingo-rainbow-6, #F63D32);
 
                 display: grid;
                 grid-template-columns: repeat(var(--dimension), 
@@ -61,7 +71,7 @@ customElements.define('bingo-tray', class extends HTMLElement  {
                 display: flex;
                 pointer-events: none;
 
-                background: rgba(255,255,255,.75);
+                background: var(--overlay);
                 backdrop-filter: blur(10px);
                 opacity: 0;
 
@@ -73,7 +83,7 @@ customElements.define('bingo-tray', class extends HTMLElement  {
                 font-size: max(5rem, min(15vw, 15vh));
                     
                 font-weight: normal;
-                color: var(--black);
+                color: var(--foreground);
                 text-transform: uppercase;
             }
             .bingo.play-animation {
@@ -110,9 +120,12 @@ customElements.define('bingo-tray', class extends HTMLElement  {
                     transform: translateX(-.3em) translateY(.5em);
                     opacity: 0;
                     text-shadow: 
-                        -.1em .1em 0 red,
-                        -.2em .2em 0 gold,
-                        -.3em .3em 0 blue;
+                        0 .2em .05em var(--rainbow-1),
+                        0 .4em .1em var(--rainbow-2),
+                        0 .6em .15em var(--rainbow-3),
+                        0 .8em .2em var(--rainbow-4),
+                        0 1em .25em var(--rainbow-5),
+                        0 1.2em .3em var(--rainbow-6);
                 }
                 33% {
                     opacity: 1;
@@ -121,9 +134,12 @@ customElements.define('bingo-tray', class extends HTMLElement  {
                     transform: translateX(0) translateY(0);
                     opacity: 1;
                     text-shadow: 
-                        0 0 0 red,
-                        0 0 0 gold,
-                        0 0 0 blue;
+                        0 0 0 var(--rainbow-1),
+                        0 0 0 var(--rainbow-2),
+                        0 0 0 var(--rainbow-3),
+                        0 0 0 var(--rainbow-4),
+                        0 0 0 var(--rainbow-5),
+                        0 0 0 var(--rainbow-6);
                 }
             }
         `;

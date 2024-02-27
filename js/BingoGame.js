@@ -47,8 +47,9 @@ customElements.define('bingo-game', class extends HTMLElement  {
         styles.textContent = //css
         `
             :host {
-                --foreground: var(--black);
-                --background: var(--white);
+                --font: var(--bingo-font, monospace);
+                --foreground: var(--bingo-foreground, #000);
+                --background: var(--bingo-background, #fff);
 
                 display: block;
                 inline-size: fit-content;
@@ -66,8 +67,8 @@ customElements.define('bingo-game', class extends HTMLElement  {
                 font-size: 1rem;
             }
             dialog {
-                --foreground: var(--white);
-                --background: var(--black);
+                --foreground: var(--bingo-background);
+                --background: var(--bingo-foreground);
 
                 font-family: var(--font);
                 font-size: 2em;
@@ -136,15 +137,18 @@ customElements.define('bingo-game', class extends HTMLElement  {
 
     }
 
-    _playClickAudio(instantPause = false) {
+   _playClickAudio(instantPause = false) {
         let clickAudio = this.querySelector("[data-id='bingo-sound-click']");
         if (clickAudio) {
             clickAudio.play();
 
+            /* Note: the play function returns a promise, which is rejected on pause.
+            This goes unhandled and throws an error in safari console for ios */
             if (instantPause) {
                 clickAudio.pause();
             }
         }
+        
     }
     _playWinAudio() {
         let winAudio = this.querySelector("[data-id='bingo-sound-win']");
