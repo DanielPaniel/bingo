@@ -2,76 +2,26 @@ BACKLOG
 http://localhost:8080/bingo/
 
 
-//    - Bättre bock / bingo
-//    - Ljud vid check och bingo - för safari på ios som kräver ngn interaktion..
-//    - Undvik hårdkodat id på audio-element?
-//    - ngn promise kastar o hanterat fel i ios
+- Publicera på github
+    - Vmguld
 
+- Gör om checks
+    - markerad - sätt backgroundsfärg
+    - bingo - dra ett streck över raden - typ toggla klasser i js:et
 
-    - Vad är layout (skugg-css) och vad är branding (ljus css)?
-
-    - Gör om checks
-        - markerad - sätt backgroundsfärg
-        - bingo - dra ett streck över raden - typ toggla klasser i js:et
-
-    - baserat på tema/svårighet
+- baserat på tema/svårighet
 
 
 - Fler bilder
 - hur kan jag auto-deploja master?
-- Publicera på github
-    - Vmguld
 
-- meny/info
-- Regler/Manual/Hjälp?
-- Kommentarer / readmes?
 
 
 Idéer
 Om man får bingo på alla samtidigt så får man "MULTIBINGO!!!!!"
-Sätta spelplan med querystring? eller varför?
-
 
 
 GREJER
-
-// Älg
-// Rådjur
-// Rovfågel
-// Fågel
-// Häst
-// Bil
-// Cykel
-// Lastbil
-// Gran
-// Lövträd
-// Björk
-// Vattendrag
-// Klocka
-// Flagga
-// Skortsten
-// Trafikljus
-// Vindkraftverk
-// Bro
-// Tunnel
-// Solen
-// Månen
-// Stjärnor
-// Moln
-// Ko
-// Får
-// Tågstation
-// Sparkcykel
-// Röd Bil
-// Svart Bil
-// Vit Bil
-// Grå Bil
-// Gul bil
-// Rött Hus
-// Gult Hus
-// Vitt Hus
-// Höbal
-// Person med väska
 
 Affär
 Hund
