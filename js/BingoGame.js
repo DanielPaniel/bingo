@@ -1,3 +1,9 @@
+/**
+ * The purpose of the bingo-game component is to:
+ * - Create new game, and save and load from local storage
+ * - Play sounds
+ * - Keep track of dimensions
+ */
 customElements.define('bingo-game', class extends HTMLElement  {
 
     constructor() {

@@ -1,3 +1,9 @@
+/**
+ * The purpose of the bingo-tray component is to:
+ * - Layout the grid of bingo-checks
+ * - Keep track of rows and columns getting Bingoed
+ */
+
 customElements.define('bingo-tray', class extends HTMLElement  {
 
     constructor() {

@@ -36,7 +36,8 @@
             --orange: #FFAA46;
             --red: #F63D32;
 
-
+            /* This is an example of how to theme the game
+            If no custom properties are set here - the component resorts to default values */
             --bingo-font: 'Necto Mono', monospace;
             --bingo-foreground: var(--black);
             --bingo-background: var(--white);
@@ -52,34 +53,9 @@
             margin: 0;
             padding: 0;
         }
-        h1 {
-            font-family: var(--bingo-font);
-            font-size: 1.5rem;
-            font-weight: normal;
-            margin: 0;
-            padding: 0;
-            color: var(--bingo-foreground);
-            text-transform: uppercase;
-        }
-        .label {
-            font-family: var(--bingo-font);
-            font-size: .8rem;
-            font-weight: normal;
-            color: var(--bingo-foreground);
-            word-break: break-word;
-        }
-
-        img {
-            border-radius: 2%;
-            display: block;
-            width: 100%;
-            height: auto;
-            pointer-events: none;
-        }
         bingo-game {
             margin: auto;
         }
-
     </style>
 </head>
 
@@ -88,7 +64,7 @@
             <bingo-bar>
                 <h1>Tåg-bingo!</h1>
             </bingo-bar>
-            <bingo-tray id="tray">
+            <bingo-tray>
             </bingo-tray>
 
             <!-- data-id is used for playing audio! -->
@@ -100,13 +76,17 @@
             </audio>
         </bingo-game>
 
-
+        <!-- 
+            Bingo-check is put in a template in order to loop through images and insert into the DOM 
+            It might as well be hard-coded into the bingo-tray
+        -->
         <template id="checkTemplate">
             <bingo-check>
                 <img slot="image" src="" width="100" height="100" alt="" />
-                <div class="label" slot="label">Description of image</div>
+                <div slot="label">Description of image</div>
             </bingo-check>
         </template>
+
 
         <script type="module">
             // Generate images from json - these could be hardcoded in markup as well

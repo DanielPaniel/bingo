@@ -1,3 +1,11 @@
+/**
+ * The purpose of the bingo-check component is to:
+ * - display an image and a label
+ * - Keep track of its status as "marked" or if in a "bingo"-row/column, 
+ *      and change appearance accordingly
+ * - Keep track of clicks and taps and interactions
+ */
+
 class BingoCheck extends HTMLElement  {
     static observedAttributes = ["marked", "bingo"];
 
@@ -30,9 +38,10 @@ class BingoCheck extends HTMLElement  {
         styles.textContent = //css
         `
             :host {
+                --font: var(--bingo-font, monospace);
                 --background: var(--bingo-background, #fff);
                 --foreground: var(--bingo-foreground, #000);
-                --accent: var(--bingo-accent, #3b6);
+                --accent: var(--bingo-accent, #15D74C);
 
                 --button-scale: 1;
                 --button-scale-duration: 120ms;
@@ -126,6 +135,21 @@ class BingoCheck extends HTMLElement  {
                 transition: transform var(--button-scale-duration) var(--button-scale-timing),
                     opacity var(--button-scale-duration) linear; 
 
+            }
+            ::slotted(img) {
+                border-radius: 2%;
+                display: block;
+                width: 100%;
+                height: auto;
+                pointer-events: none;
+            }
+
+            slot[name="label"] {
+                font-family: var(--font);
+                font-size: 1rem;
+                font-weight: normal;
+                color: var(--foreground);
+                word-break: break-word;
             }
 
             @keyframes wiggle {

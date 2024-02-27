@@ -1,3 +1,7 @@
+/**
+ * The purpose of the bingo-bar component is to contain the structure for a top bar
+ * 
+ */
 customElements.define('bingo-bar', class extends HTMLElement  {
 
     constructor() {
@@ -33,6 +37,15 @@ customElements.define('bingo-bar', class extends HTMLElement  {
 
                 padding-inline: 1em;
                 padding-block: .5em;
+            }
+            ::slotted(h1) {
+                font-family: var(--bingo-font);
+                font-size: 1.5rem;
+                font-weight: normal;
+                margin: 0;
+                padding: 0;
+                color: var(--foreground);
+                text-transform: uppercase;
             }
             button {
                 cursor: pointer;
