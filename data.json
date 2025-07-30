@@ -5,6 +5,7 @@
         { "id": "car-3", "filename": "car-white.svg", "label": "Vit bil" },
         { "id": "car-4", "filename": "car-black.svg", "label": "Svart bil" },
         { "id": "car-5", "filename": "car-yellow.svg", "label": "Gul bil" },
+        { "id": "car-6", "filename": "car-taxi.svg", "label": "Taxi" },
         { "id": "clouds", "filename": "clouds.svg", "label": "Moln" },
         { "id": "horse", "filename": "horse.svg", "label": "Häst" },
         { "id": "stars", "filename": "stars.svg", "label": "Stjärnor" },
@@ -35,7 +36,18 @@
         { "id": "house-2", "filename": "house-red.svg", "label": "Rött hus"},
         { "id": "house-3", "filename": "house-white.svg", "label": "Vitt hus"},
         { "id": "hay", "filename": "hay.svg", "label": "Höbal"},
-        { "id": "bag", "filename": "bag.svg", "label": "Person med väska"}
-
+        { "id": "bag", "filename": "bag.svg", "label": "Person med väska"},
+        { "id": "boat", "filename": "boat.svg", "label": "Båt"},
+        { "id": "church", "filename": "church.svg", "label": "Kyrka"},
+        { "id": "graffiti", "filename": "graffiti.svg", "label": "Graffiti"},
+        { "id": "roadsign", "filename": "roadsign.svg", "label": "Vägskylt"},
+        { "id": "tractor", "filename": "tractor.svg", "label": "Traktor"},
+        { "id": "flowers", "filename": "flowers.svg", "label": "Blommor"},
+        { "id": "fence", "filename": "fence.svg", "label": "Staket"},
+        { "id": "bus", "filename": "bus.svg", "label": "Buss"},
+        { "id": "trashcan", "filename": "trashcan.svg", "label": "Papperskorg"},
+        { "id": "airplane", "filename": "airplane.svg", "label": "Flygplan"},
+        { "id": "powerline", "filename": "powerline.svg", "label": "Elledning"},
+        { "id": "gravelroad", "filename": "gravelroad.svg", "label": "Grusväg"}
     ]
 }
